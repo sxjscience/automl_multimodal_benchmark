@@ -74,9 +74,11 @@ Go to [multimodal_text_benchmark/scripts/benchmark](multimodal_text_benchmark/sc
 
 BibTeX entry:
 
+```
 @article{agmultimodaltext,
   title={Multimodal AutoML on Structured Tables with Text Fields},
   author={Shi, Xingjian and Mueller, Jonas and Erickson, Nick and Li, Mu and Smola, Alexander},
   journal={8th ICML Workshop on Automated Machine Learning (AutoML)},
   year={2021}
 }
+```

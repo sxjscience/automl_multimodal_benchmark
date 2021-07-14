@@ -64,7 +64,8 @@ cd autogluon
 bash full_install.sh
 ```
 
-For more information or if you want to run a different version of AutoGluon, please refer to the [AutoGluon website](https://auto.gluon.ai/).
+For more information or if you want to run a different version of AutoGluon, please refer to the [AutoGluon website](https://auto.gluon.ai/). 
+Also see the [tutorial on how to easily run AutoGluon on tabular datasets that contain text](https://auto.gluon.ai/stable/tutorials/tabular_prediction/tabular-multimodal-text-others.html).
 
 ## Run Experiments
 

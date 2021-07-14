@@ -25,7 +25,7 @@ def get_data_home_dir():
 
 def get_repo_url():
     """Return the base URL for Gluon dataset and model repository """
-    default_repo = 's3://automl-mm-bench'
+    default_repo = 'https://automl-mm-bench.s3.amazonaws.com'
     repo_url = os.environ.get('AUTO_MM_BENCH_REPO', default_repo)
     if repo_url[-1] != '/':
         repo_url = repo_url + '/'

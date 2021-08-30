@@ -53,12 +53,9 @@ train_data.to_csv(os.path.join(directory, output_subdir, train_name), index=Fals
 test_data.to_csv(os.path.join(directory, output_subdir, test_name), index=False)
 print(f'#Train={len(train_data)}, #Dev={len(test_data)}')
 
-# Compute checksum:
-from auto_mm_bench.utils import sha1sum
-print("Train hash:\n", sha1sum(os.path.join(directory, output_subdir, train_name)))
-print("Test hash:\n", sha1sum(os.path.join(directory, output_subdir, test_name)))
 
-# Test run autogluon:
+## Test run autogluon:
+
 from autogluon.tabular import TabularDataset, TabularPredictor
 from autogluon import TabularPrediction as task
 from sklearn.feature_extraction.text import CountVectorizer
@@ -73,3 +70,7 @@ predictor.fit(train_data, time_limit=time_limit, feature_generator=feature_gener
 predictor.evaluate(test_data)
 
 
+# Compute checksum:
+from auto_mm_bench.utils import sha1sum
+print("Train hash:\n", sha1sum(os.path.join(directory, output_subdir, train_name)))
+print("Test hash:\n", sha1sum(os.path.join(directory, output_subdir, test_name)))

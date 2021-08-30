@@ -1,4 +1,4 @@
-__version__ = '0.0.1.dev'
+__version__ = '1.0.0.dev'
 
 from . import datasets
 from . import utils

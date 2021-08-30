@@ -1,5 +1,5 @@
 """
-Preprocessing Fake Job Postings data:
+Preprocessing Kickstarter Funding data
 https://www.kaggle.com/codename007/funding-successful-projects?select=train.csv
 """
 

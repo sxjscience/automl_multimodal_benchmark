@@ -41,12 +41,12 @@ for ele in test_data['category_name']:
         test_cat3.append(None)
 
 train_data['log_price'] = np.log(train_data['price'] + 1)
-train_data.drop('category_name', axis=1)
+# train_data = train_data.drop('category_name', axis=1)
 train_data['cat1'] = train_cat1
 train_data['cat2'] = train_cat2
 train_data['cat3'] = train_cat3
 
-test_data.drop('category_name', axis=1)
+# test_data = test_data.drop('category_name', axis=1)
 test_data['cat1'] = test_cat1
 test_data['cat2'] = test_cat2
 test_data['cat3'] = test_cat3

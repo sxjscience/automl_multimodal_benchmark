@@ -11,7 +11,7 @@ import numpy as np
 import os
 from sklearn.model_selection import train_test_split
 
-directory = 'jcpenney'
+directory = 'jcpenney/'
 output_subdir = 'processed/' # where to write files
 filename = 'jcpenney_com-ecommerce_sample.csv'
 problem_type = 'regression'

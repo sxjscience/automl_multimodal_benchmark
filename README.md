@@ -80,9 +80,11 @@ for dataset_name in list(TEXT_BENCHMARK_ALIAS_MAPPING.values()):
 
 
 ### Install AutoGluon
+ 
+We use the official AutoGluon for benchmark purpose. Please refer to the [AutoGluon website](https://auto.gluon.ai/) for installation instructions.
+Also see the [tutorial on how to easily run AutoGluon on tabular datasets that contain text](https://auto.gluon.ai/stable/tutorials/tabular_prediction/tabular-multimodal-text-others.html).
 
-This repository contains a particular version of AutoGluon we previously reported benchmark performance for. We recommend installing it in a fresh virtualenv. 
-To use this version, you will need to install MXNet first as a prerequisite. It is recommended to use MXNet 1.8 wheel with CUDA 11.0:
+Following is the example installation commands that we used in our benchmark. First, install MXNet 1.8 wheel with CUDA 11.0:
 
 ```bash
 
@@ -93,15 +95,11 @@ python3 -m pip install https://aws-mx-pypi.s3-us-west-2.amazonaws.com/1.8.0/aws_
 python3 -m pip install https://aws-mx-pypi.s3-us-west-2.amazonaws.com/1.8.0/aws_mx_cu110-1.8.0-py2.py3-none-manylinux2014_x86_64.whl
 ```
 
-Once you have MXNet, you can install the AutoGluon:
+Once you have MXNet, install AutoGluon with the following command:
 
 ```bash
 python3 -m pip install autogluon
 ```
-
-For more information or if you want to run a different version of AutoGluon, please refer to the [AutoGluon website](https://auto.gluon.ai/). 
-Also see the [tutorial on how to easily run AutoGluon on tabular datasets that contain text](https://auto.gluon.ai/stable/tutorials/tabular_prediction/tabular-multimodal-text-others.html).
-
 ## Run Experiments
 
 Go to [multimodal_text_benchmark/scripts/benchmark](multimodal_text_benchmark/scripts/benchmark) to see how to run different ML methods over the benchmark. 

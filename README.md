@@ -98,7 +98,7 @@ python3 -m pip install https://aws-mx-pypi.s3-us-west-2.amazonaws.com/1.8.0/aws_
 Once you have MXNet, install AutoGluon with the following command:
 
 ```bash
-python3 -m pip install autogluon
+python3 -m pip install autogluon==0.3.0
 ```
 ## Run Experiments
 

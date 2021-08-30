@@ -1,3 +1,4 @@
+"""Script used to downsample the Jigsaw Unintended Bias Dataset"""
 import os
 import numpy as np
 from auto_mm_bench.datasets import JigsawUnintendedBias, MercariPriceSuggestion

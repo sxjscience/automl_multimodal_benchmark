@@ -1,6 +1,6 @@
 import pytest
 from auto_mm_bench.datasets import *
-
+from auto_mm_bench.datasets import create_dataset
 
 @pytest.mark.parametrize('key', dataset_registry.list_keys())
 def test_generic(key):
@@ -8,6 +8,8 @@ def test_generic(key):
     test_dataset = dataset_registry.create(key, 'test')
     assert len(train_dataset.label_columns) == len(train_dataset.label_types)
     assert len(test_dataset.label_columns) == len(test_dataset.label_columns)
+    for col in train_dataset.label_columns:
+        assert col not in train_dataset.feature_columns
 
 
 @pytest.mark.parametrize('split,num_sample',
@@ -67,4 +69,31 @@ def test_mercari_price_suggestion(split, num_sample):
                           ('test', 5666)])
 def test_ae_price_prediction(split, num_sample):
     df = AEPricePrediction(split).data
+    assert len(df) == num_sample
+
+
+@pytest.mark.parametrize('split,num_sample',
+                         [('train', 15841),
+                          ('test', 3961),
+                          ('competition', 6601)])
+def test_data_scientist_salary(split, num_sample):
+    df = create_dataset('data_scientist_salary', split).data
+    assert len(df) == num_sample
+
+
+@pytest.mark.parametrize('split,num_sample',
+                         [('train', 4989),
+                          ('test', 1248),
+                          ('competition', 1560)])
+def test_bookprice_prediction(split, num_sample):
+    df = create_dataset('bookprice_prediction', split).data
+    assert len(df) == num_sample
+
+
+@pytest.mark.parametrize('split,num_sample',
+                         [('train', 37951),
+                          ('test', 9488),
+                          ('competition', 31626)])
+def test_california_house_price(split, num_sample):
+    df = create_dataset('california_house_price', split).data
     assert len(df) == num_sample

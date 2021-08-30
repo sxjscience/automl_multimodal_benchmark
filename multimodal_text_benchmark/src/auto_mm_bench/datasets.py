@@ -18,6 +18,31 @@ _REGRESSION = 'regression'
 dataset_registry = Registry('auto_mm_bench_datasets')
 
 
+TEXT_BENCHMARK_ALIAS_MAPPING = {
+    'prod': 'product_sentiment_machine_hack',
+    'airbnb': 'melbourne_airbnb',
+    'channel': 'news_channel',
+    'wine': 'wine_reviews',
+    'imdb': 'imdb_genre_prediction',
+    'jigsaw': 'jigsaw_unintended_bias100K',
+    'fake': 'fake_job_postings2',
+    'kick': 'kick_starter_funding',
+    'ae': 'ae_price_prediction',
+    'qaa': 'google_qa_answer_type_reason_explanation',
+    'qaq': 'google_qa_question_type_reason_explanation',
+    'cloth': 'women_clothing_review',
+    'mercari': 'mercari_price_suggestion100K',
+    'jc': 'jc_penney_products',
+    'pop': 'news_popularity2',
+    'book': 'bookprice_prediction',
+    'salary': 'data_scientist_salary',
+    'house': 'california_house_price',
+}
+
+def create_dataset(name, *args, **kwargs):
+    return dataset_registry.create(name, *args, **kwargs)
+
+
 class BaseMultiModalDataset(abc.ABC):
     @property
     @abc.abstractmethod
@@ -1101,7 +1126,182 @@ class FakeJobPostings2(FakeJobPostings):
         self._data = pd.read_csv(self._path)
 
 
+@dataset_registry.register('bookprice_prediction')
+class BookPricePrediction(BaseMultiModalDataset):
+    _SOURCE = 'https://machinehack.com/hackathons/predict_the_price_of_books/overview',
+    _INFO = {
+        'train': {
+            'url': get_repo_url() + 'machine_hack_competitions/predict_the_price_of_books/train.csv',
+            'sha1sum': '781ec11238d5b15f3803ee7575b12e0b1b982e0d'
+        },
+        'test': {
+            'url': get_repo_url() + 'machine_hack_competitions/predict_the_price_of_books/test.csv',
+            'sha1sum': '7b1aa0526a5c8e9a89e5da0aeb77772317bd93c9'
+        },
+        'competition': {
+            'url': get_repo_url() + 'machine_hack_competitions/predict_the_price_of_books/competition.csv',
+            'sha1sum': '69476986faf693a7d2177d722f4ef36f243a0a0f'
+        }
+    }
+
+    def __init__(self, split='train'):
+        super().__init__()
+        self._split = split
+        self._path = os.path.join(get_data_home_dir(), 'bookprice', f'{split}.pq')
+        download(self._INFO[split]['url'], path=self._path, sha1_hash=self._INFO[split]['sha1sum'])
+        self._data = pd.read_csv(self._path)
+
+    @classmethod
+    def splits(cls):
+        return cls._INFO.keys()
+
+    @property
+    def data(self):
+        return self._data
+
+    @property
+    def label_columns(self):
+        return ['Price']
+
+    @property
+    def label_types(self):
+        return [_NUMERICAL]
+
+    @property
+    def feature_columns(self):
+        return ['Title', 'Author', 'Edition', 'Reviews', 'Ratings', 'Synopsis', 'Genre',
+                'BookCategory']
+
+    @property
+    def metric(self):
+        return 'r2'
+
+    @property
+    def problem_type(self):
+        return _REGRESSION
+
+    def postprocess_label(self, data):
+        """Process the labels back to the original price.
+
+        The original price has been transformed via
+
+            np.log10(train_df['Price'] + 1)
+        """
+        return np.max(np.power(10, data) - 1, 0)
 
 
+@dataset_registry.register('data_scientist_salary')
+class DataScientistSalaryPrediction(BaseMultiModalDataset):
+    _SOURCE = 'https://machinehack.com/hackathons/predict_the_data_scientists_salary_in_india_hackathon/overview',
+    _INFO = {
+        'train': {
+            'url': get_repo_url() + 'machine_hack_competitions/predict_the_data_scientists_salary_in_india_hackathon/train.csv',
+            'sha1sum': '9ea3bb2bcd0396ae6c70d62bad32ef211276b0f6'
+        },
+        'test': {
+            'url': get_repo_url() + 'machine_hack_competitions/predict_the_data_scientists_salary_in_india_hackathon/test.csv',
+            'sha1sum': '98194e41d1d4ebb251b38c2d474f486b08769a9f'
+        },
+        'competition': {
+            'url': get_repo_url() + 'machine_hack_competitions/predict_the_data_scientists_salary_in_india_hackathon/competition.csv',
+            'sha1sum': 'a00af740d378cd80ffcf7d7496a122a618d61450'
+        }
+    }
+
+    def __init__(self, split='train'):
+        super().__init__()
+        self._split = split
+        self._path = os.path.join(get_data_home_dir(), 'data_scientist_salary', f'{split}.pq')
+        download(self._INFO[split]['url'], path=self._path, sha1_hash=self._INFO[split]['sha1sum'])
+        self._data = pd.read_csv(self._path)
+
+    @classmethod
+    def splits(cls):
+        return cls._INFO.keys()
+
+    @property
+    def data(self):
+        return self._data
+
+    @property
+    def label_columns(self):
+        return ['salary']
+
+    @property
+    def label_types(self):
+        return [_CATEGORICAL]
+
+    @property
+    def feature_columns(self):
+        return [col for col in list(self.data.columns) if col not in self.label_columns]
+
+    @property
+    def metric(self):
+        return 'acc'
+
+    @property
+    def problem_type(self):
+        return _MULTICLASS
 
 
+@dataset_registry.register('california_house_price')
+class KaggleCaliforniaHousePricePrediction(BaseMultiModalDataset):
+    _SOURCE = 'https://www.kaggle.com/c/california-house-prices',
+    _INFO = {
+        'train': {
+            'url': get_repo_url() + 'kaggle-california-house-prices/train.csv',
+            'sha1sum': 'f3d6105ca22098cd31562ba83631eda56c6240f1'
+        },
+        'test': {
+            'url': get_repo_url() + 'kaggle-california-house-prices/test.csv',
+            'sha1sum': '2ef7f0dc4da29e9fff55324602194e053baa6dfd'
+        },
+        'competition': {
+            'url': get_repo_url() + 'kaggle-california-house-prices/competition.csv',
+            'sha1sum': 'de4a3c3970998ecb9cf0140c2c4b2014aecfa1f8'
+        }
+    }
+
+    def __init__(self, split='train'):
+        super().__init__()
+        self._split = split
+        self._path = os.path.join(get_data_home_dir(), 'california_house_price', f'{split}.pq')
+        download(self._INFO[split]['url'], path=self._path, sha1_hash=self._INFO[split]['sha1sum'])
+        self._data = pd.read_csv(self._path)
+
+    @classmethod
+    def splits(cls):
+        return cls._INFO.keys()
+
+    @property
+    def data(self):
+        return self._data
+
+    @property
+    def label_columns(self):
+        return ['Sold Price']
+
+    @property
+    def label_types(self):
+        return [_NUMERICAL]
+
+    @property
+    def feature_columns(self):
+        return [col for col in list(self.data.columns) if col not in self.label_columns and col != 'Id']
+
+    @property
+    def metric(self):
+        return 'r2'
+
+    @property
+    def problem_type(self):
+        return _REGRESSION
+
+    def postprocess_label(self, data):
+        """Process the labels back to the original price.
+
+        The original price has been transformed via
+
+            np.log10(train_df['Sold Price'] + 1)
+        """
+        return np.exp(data)

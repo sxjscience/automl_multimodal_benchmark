@@ -2,7 +2,7 @@
 
 Repository for the NeurIPS 2021 Dataset Track Submission "Benchmarking Multimodal AutoML for Tabular Data with Text Fields" ([Link](https://openreview.net/forum?id=Q0zOIaec8HF), [Full Paper with Appendix](https://openreview.net/attachment?id=Q0zOIaec8HF&name=supplementary_material)). 
 An earlier version of the paper, called "Multimodal AutoML on Structured Tables with Text Fields" ([Link](https://openreview.net/forum?id=OHAIVOOl7Vl)) has been accepted by ICML 2021 AutoML workshop as **Oral**. 
-As we have updated the benchmark with more datasets, the version used in the AutoML workshop paper is archived at the [icml_workshop branch](https://github.com/sxjscience/automl_multimodal_benchmark/tree/icml_workshop). 
+As we have updated the benchmark with more datasets, the version used in the AutoML workshop paper has been archived at the [icml_workshop branch](https://github.com/sxjscience/automl_multimodal_benchmark/tree/icml_workshop). 
 
 This benchmark contains a diverse collection of tabular datasets. Each dataset contains numeric/categorical as well as text columns.
 The goal is to evaluate the performance of (automated) ML systems for supervised learning tasks (classification and regression) with such multimodal data.
@@ -78,28 +78,6 @@ for dataset_name in list(TEXT_BENCHMARK_ALIAS_MAPPING.values()):
     dataset = create_dataset(dataset_name)
 ```
 
-
-### Install AutoGluon
- 
-We use the official AutoGluon for benchmark purpose. Please refer to the [AutoGluon website](https://auto.gluon.ai/) for installation instructions.
-Also see the [tutorial on how to easily run AutoGluon on tabular datasets that contain text](https://auto.gluon.ai/stable/tutorials/tabular_prediction/tabular-multimodal-text-others.html).
-
-Following is the example installation commands that we used in our benchmark. First, install MXNet 1.8 wheel with CUDA 11.0:
-
-```bash
-
-# CPU-only
-python3 -m pip install https://aws-mx-pypi.s3-us-west-2.amazonaws.com/1.8.0/aws_mx-1.8.0-py2.py3-none-manylinux2014_x86_64.whl
-
-# CUDA 11 Version
-python3 -m pip install https://aws-mx-pypi.s3-us-west-2.amazonaws.com/1.8.0/aws_mx_cu110-1.8.0-py2.py3-none-manylinux2014_x86_64.whl
-```
-
-Once you have MXNet, install AutoGluon with the following command:
-
-```bash
-python3 -m pip install autogluon==0.3.0
-```
 ## Run Experiments
 
 Go to [multimodal_text_benchmark/scripts/benchmark](multimodal_text_benchmark/scripts/benchmark) to see how to run different ML methods over the benchmark. 

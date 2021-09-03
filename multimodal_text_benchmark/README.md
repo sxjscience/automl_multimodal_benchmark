@@ -180,24 +180,24 @@ Link: https://archive.ics.uci.edu/ml/datasets/online+news+popularity
 
 ### salary
 
-Original data source: MachineHack Hackathon: Predict the Data Scientist Salary in India
+Original data source: Predict the Data Scientist Salary in India (MachineHack prediction competition)
 
 Link: https://machinehack.com/hackathons/predict_the_data_scientists_salary_in_india_hackathon/overview
 
-**Task:** (Multiclass Classification) Predict the salary range in data scientist job listings
+**Task:** (Multiclass Classification) Predict the salary range in data scientist job listings (in India) given the job description as well as other features like skill requirements and location.
 
 ### book
 
-Original data source: MachineHack Hackathon: Book Price Prediction 
+Original data source: Book Price Prediction (MachineHack prediction competition)
 
 Link: https://machinehack.com/hackathons/predict_the_price_of_books/overview
 
-**Task:** (Regression) Predict the sale price of books based on features like their title, author, synopsis, genre,190customer review, overall rating.
+**Task:** (Regression) Predict the sale price of books based on features like their title, author, synopsis, genre, customer review, overall rating.
 
 ### house
 
-Original data source: Kaggle: California House Price Prediction
+Original data source: California House Price Prediction (Kaggle prediction competition)
 
 Link: https://www.kaggle.com/c/california-house-prices
 
-**Task:** (Regression) Predict sale prices of California homes sold in 2020 based on a text summary written by the208seller and standard tabular features (e.g. bedroom number, home type, location, year built, parking).
+**Task:** (Regression) Predict sale prices of California homes sold in 2020 based on a text summary written by the seller and standard tabular features (e.g. bedroom number, home type, location, year built, parking).

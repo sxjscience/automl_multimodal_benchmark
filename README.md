@@ -2,15 +2,15 @@
 
 Repository for the NeurIPS 2021 Dataset Track Submission "Benchmarking Multimodal AutoML for Tabular Data with Text Fields" ([Link](https://openreview.net/forum?id=Q0zOIaec8HF), [Full Paper with Appendix](https://openreview.net/attachment?id=Q0zOIaec8HF&name=supplementary_material)). 
 An earlier version of the paper, called "Multimodal AutoML on Structured Tables with Text Fields" ([Link](https://openreview.net/forum?id=OHAIVOOl7Vl)) has been accepted by ICML 2021 AutoML workshop as **Oral**. 
-As we have updated the benchmark with more datasets, the version used in the AutoML workshop paper has been archived at the [icml_workshop branch](https://github.com/sxjscience/automl_multimodal_benchmark/tree/icml_workshop). 
+As we have since updated the benchmark with more datasets, the version used in the AutoML workshop paper has been archived at the [icml_workshop branch](https://github.com/sxjscience/automl_multimodal_benchmark/tree/icml_workshop). 
 
 This benchmark contains a diverse collection of tabular datasets. Each dataset contains numeric/categorical as well as text columns.
-The goal is to evaluate the performance of (automated) ML systems for supervised learning tasks (classification and regression) with such multimodal data.
-Python code is provided to run different variants of the [AutoGluon](https://github.com/awslabs/autogluon/) AutoML tool and [H2O](https://github.com/h2oai/h2o-3) on the benchmark.
+The goal is to evaluate the performance of (automated) ML systems for supervised learning (classification and regression) with such multimodal data.
+The folder [multimodal_text_benchmark/scripts/benchmark/](multimodal_text_benchmark/scripts/benchmark) provides Python scripts to run different variants of the [AutoGluon](https://github.com/awslabs/autogluon/) and [H2O](https://github.com/h2oai/h2o-3) AutoML tools on the benchmark.
 
-## Details about the Datasets
+## Datasets used in the Benchmark 
 
-Here's the brief description of the datasets in our benchmark. The details are described in detail in the [multimodal_text_benchmark](multimodal_text_benchmark) folder.
+Here's a brief summary of the datasets in our benchmark. Each dataset is described in greater detail in the [multimodal_text_benchmark/](multimodal_text_benchmark) folder.
 
 
 | ID       | key |  #Train | #Test | Task | Metric  | Prediction Target |
@@ -56,19 +56,21 @@ cd multimodal_text_benchmark/tests
 python3 -m pytest test_datasets.py
 ```
 
-To access one dataset, try to use the following code:
+To work with one of the datasets, use the following code:
 
 ```python
 from auto_mm_bench.datasets import dataset_registry
 
-print(dataset_registry.list_keys())
-train_dataset = dataset_registry.create('product_sentiment_machine_hack', 'train')
-test_dataset = dataset_registry.create('product_sentiment_machine_hack', 'test')
+print(dataset_registry.list_keys())  # list of all dataset names
+dataset_name = 'product_sentiment_machine_hack'
+
+train_dataset = dataset_registry.create(dataset_name, 'train')
+test_dataset = dataset_registry.create(dataset_name, 'test')
 print(train_dataset.data)
 print(test_dataset.data)
 ```
 
-To access the 18 datasests used in the benchmark 
+To access all datasets that comprise the benchmark:
 
 ```python
 from auto_mm_bench.datasets import create_dataset, TEXT_BENCHMARK_ALIAS_MAPPING
@@ -80,7 +82,7 @@ for dataset_name in list(TEXT_BENCHMARK_ALIAS_MAPPING.values()):
 
 ## Run Experiments
 
-Go to [multimodal_text_benchmark/scripts/benchmark](multimodal_text_benchmark/scripts/benchmark) to see how to run different ML methods over the benchmark. 
+Go to [multimodal_text_benchmark/scripts/benchmark](multimodal_text_benchmark/scripts/benchmark) to see how to run some baseline ML methods over the benchmark. 
 
 ## References
 

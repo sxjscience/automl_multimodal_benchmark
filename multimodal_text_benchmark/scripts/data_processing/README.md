@@ -30,7 +30,6 @@ For datasets retrieved from Kaggle, you must first install the [Kaggle API](http
     cd ..
     python3 process_machine_hack_data_scientist_salary.py --dir_path data_scientist_salary
     ```
-- channel
 - wine
   - Name: Wine Review Classification, [source](https://www.kaggle.com/zynicide/wine-reviews)
   - Commands:

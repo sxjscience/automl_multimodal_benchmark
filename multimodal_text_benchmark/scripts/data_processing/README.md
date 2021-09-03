@@ -30,7 +30,6 @@ For datasets retrieved from Kaggle, you must first install the [Kaggle API](http
     cd ..
     python3 process_machine_hack_data_scientist_salary.py --dir_path data_scientist_salary
     ```
-- channel
 - wine
   - Name: Wine Review Classification, [source](https://www.kaggle.com/zynicide/wine-reviews)
   - Commands:
@@ -105,6 +104,12 @@ For datasets retrieved from Kaggle, you must first install the [Kaggle API](http
   - Commands:
     ```
     python3 process_news_popularity.py
+    ```
+- channel
+  - Name: Online popularity of news article, [source](https://archive.ics.uci.edu/ml/datasets/online+news+popularity)
+  - Commands:
+    ```
+    python3 process_news_channel.py  # must be executed after process_news_popularity.py 
     ```
 - house
   - Name: California House Price Prediction, [source](https://www.kaggle.com/c/california-house-prices)

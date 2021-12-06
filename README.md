@@ -1,6 +1,6 @@
 # Benchmarking Multimodal AutoML for Tabular Data with Text Fields 
 
-Repository for the NeurIPS 2021 Dataset Track Submission "Benchmarking Multimodal AutoML for Tabular Data with Text Fields" ([Link](https://openreview.net/forum?id=Q0zOIaec8HF), [Full Paper with Appendix](https://openreview.net/attachment?id=Q0zOIaec8HF&name=supplementary_material)). 
+Repository of the paper"Benchmarking Multimodal AutoML for Tabular Data with Text Fields" ([Link](https://arxiv.org/abs/2111.02705)) that has been accepted by NeurIPS 2021 Track on Datasets and Benchmarks. 
 An earlier version of the paper, called "Multimodal AutoML on Structured Tables with Text Fields" ([Link](https://openreview.net/forum?id=OHAIVOOl7Vl)) has been accepted by ICML 2021 AutoML workshop as **Oral**. 
 As we have since updated the benchmark with more datasets, the version used in the AutoML workshop paper has been archived at the [icml_workshop branch](https://github.com/sxjscience/automl_multimodal_benchmark/tree/icml_workshop). 
 
@@ -93,6 +93,17 @@ BibTeX entry of the ICML Workshop Version:
   title={Multimodal AutoML on Structured Tables with Text Fields},
   author={Shi, Xingjian and Mueller, Jonas and Erickson, Nick and Li, Mu and Smola, Alexander},
   journal={8th ICML Workshop on Automated Machine Learning (AutoML)},
+  year={2021}
+}
+```
+
+BibTeX entry of the NeurIPS Version:
+
+```
+@inproceedings{shi2021benchmarking,
+  title={Benchmarking Multimodal AutoML for Tabular Data with Text Fields},
+  author={Shi, Xingjian and Mueller, Jonas and Erickson, Nick and Li, Mu and Smola, Alexander J},
+  booktitle={Advances in neural information processing systems track on datasets and benchmarks},
   year={2021}
 }
 ```

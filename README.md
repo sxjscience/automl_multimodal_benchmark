@@ -1,7 +1,7 @@
 # Benchmarking Multimodal AutoML for Tabular Data with Text Fields 
 
-Repository for the NeurIPS 2021 Dataset Track Submission "Benchmarking Multimodal AutoML for Tabular Data with Text Fields" ([Link](https://openreview.net/forum?id=Q0zOIaec8HF), [Full Paper with Appendix](https://openreview.net/attachment?id=Q0zOIaec8HF&name=supplementary_material)). 
-An earlier version of the paper, called "Multimodal AutoML on Structured Tables with Text Fields" ([Link](https://openreview.net/forum?id=OHAIVOOl7Vl)) has been accepted by ICML 2021 AutoML workshop as **Oral**. 
+Repository of the paper "Benchmarking Multimodal AutoML for Tabular Data with Text Fields" ([Link](https://arxiv.org/abs/2111.02705)) published at the NeurIPS 2021 Track on Datasets and Benchmarks. 
+An earlier version of the paper, titled "Multimodal AutoML on Structured Tables with Text Fields" ([Link](https://openreview.net/forum?id=OHAIVOOl7Vl)) was featured at the ICML 2021 AutoML workshop as an **Oral Presentation**. 
 As we have since updated the benchmark with more datasets, the version used in the AutoML workshop paper has been archived at the [icml_workshop branch](https://github.com/sxjscience/automl_multimodal_benchmark/tree/icml_workshop). 
 
 This benchmark contains a diverse collection of tabular datasets. Each dataset contains numeric/categorical as well as text columns.
@@ -39,7 +39,6 @@ The versions of datasets in this benchmark are released under the [CC BY-NC-SA](
 Note that the datasets in this benchmark are [modified versions](multimodal_text_benchmark/scripts/data_processing/README.md) of previously publicly-available original copies and we **do not own** any of the datasets in the benchmark. 
 Any data from this benchmark which has previously been published elsewhere falls under the original license from which the data originated. 
 Please refer to the licenses of each original source linked in the [multimodal_text_benchmark/README.md](multimodal_text_benchmark/README.md).
-
 
 ## Install the Benchmark Suite
 
@@ -84,15 +83,20 @@ for dataset_name in list(TEXT_BENCHMARK_ALIAS_MAPPING.values()):
 
 Go to [multimodal_text_benchmark/scripts/benchmark](multimodal_text_benchmark/scripts/benchmark) to see how to run some baseline ML methods over the benchmark. 
 
+## Model your own classification/regression datasets with text+numeric+categorical features 
+
+The top-performing modeling strategies identified in our paper have been added to [AutoGluon](https://github.com/awslabs/autogluon). 
+You can easily fit these models to your own text/tabular data via [this tutorial](https://auto.gluon.ai/stable/tutorials/tabular_prediction/tabular-multimodal-text-others.html).
+
 ## References
 
-BibTeX entry of the ICML Workshop Version:
+If you use our benchmark or text/tabular modeling strategy in a scientific paper, please cite the following BibTeX entry:
 
 ```
-@article{agmultimodaltext,
-  title={Multimodal AutoML on Structured Tables with Text Fields},
-  author={Shi, Xingjian and Mueller, Jonas and Erickson, Nick and Li, Mu and Smola, Alexander},
-  journal={8th ICML Workshop on Automated Machine Learning (AutoML)},
+@inproceedings{shi2021benchmarking,
+  title={Benchmarking Multimodal AutoML for Tabular Data with Text Fields},
+  author={Shi, Xingjian and Mueller, Jonas and Erickson, Nick and Li, Mu and Smola, Alexander J},
+  booktitle={Proceedings of the Neural Information Processing Systems Track on Datasets and Benchmarks},
   year={2021}
 }
 ```
